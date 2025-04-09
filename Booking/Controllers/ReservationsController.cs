@@ -58,6 +58,7 @@ namespace Booking.Controllers
 
             return View();
         }
+        [Authorize]
         public async Task<IActionResult> CreateNewReservation(int roomId, DateTime checkInDate, DateTime checkOutDate, string customerName, string notes)
         {
             User customer = new()
@@ -96,11 +97,13 @@ namespace Booking.Controllers
             return View("ReservationDetails");
         }
 
+        [Authorize]
         public async Task<IActionResult> ViewReservations()
         {
             return View();
         }
 
+        [Authorize]
         public async Task<IActionResult> ViewReservationsForCustomer(string customerName)
         {
             var bookingContext = _context.Reservation
