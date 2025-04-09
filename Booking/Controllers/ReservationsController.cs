@@ -70,7 +70,10 @@ namespace Booking.Controllers
 
             Room room = await _context.Room.FindAsync(roomId);
 
-
+            if(notes == null)
+            {
+                notes = string.Empty;
+            }
             var reservation = new Reservation
             {
                 UserId = customer.Id,
