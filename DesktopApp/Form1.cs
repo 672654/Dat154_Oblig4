@@ -18,7 +18,7 @@ namespace DesktopApp
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void allReservations_Click(object sender, EventArgs e)
         {
 
             var reservation = context.Reservation
@@ -41,6 +41,7 @@ namespace DesktopApp
 
             CustomDataGridView();
             dataGridView1.DataSource = viewReservation;
+            Manage(sender, e);
 
 
         }
@@ -72,14 +73,24 @@ namespace DesktopApp
             dataGridView1.DataSource = viewRooms;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Manage(object sender, EventArgs e)
         {
-            DataGridViewButtonColumn makeReseration = new DataGridViewButtonColumn();
-            makeReseration.HeaderText = "Action";
-            makeReseration.Text = "Make Reservation";
-            makeReseration.UseColumnTextForButtonValue = true;
+            DataGridViewButtonColumn edit = new DataGridViewButtonColumn();
+            edit.HeaderText = "Manage";
+            edit.Text = "Edit";
+            edit.UseColumnTextForButtonValue = true;
 
-            dataGridView1.Columns.Add(makeReseration);
+            //legg til event til knappen!
+            //bruk num til å sende til korrekt nye view da flere editors skal brukes.
+            // 1 = manage reservations
+            // 2 = manage rooms
+            // 3 = manage service
+
+            dataGridView1.Columns.Add(edit);
         }
+
+        
+
+
     }
 }

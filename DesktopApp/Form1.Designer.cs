@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            button2 = new Button();
             AllRooms = new Button();
             button1 = new Button();
             dataGridView1 = new DataGridView();
-            button2 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -47,6 +47,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 56);
             panel1.TabIndex = 2;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(638, 12);
+            button2.Name = "button2";
+            button2.Size = new Size(150, 34);
+            button2.TabIndex = 2;
+            button2.Text = "Management";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += Manage;
             // 
             // AllRooms
             // 
@@ -66,7 +76,7 @@
             button1.TabIndex = 0;
             button1.Text = "All Reservations";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Click += allReservations_Click;
             // 
             // dataGridView1
             // 
@@ -78,16 +88,6 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(800, 394);
             dataGridView1.TabIndex = 1;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(638, 12);
-            button2.Name = "button2";
-            button2.Size = new Size(150, 34);
-            button2.TabIndex = 2;
-            button2.Text = "Management";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
             // 
             // Form1
             // 
