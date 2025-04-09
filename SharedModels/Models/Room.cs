@@ -18,6 +18,8 @@ namespace SharedModels.Models
 
         public bool CheckedOut { get; set; }
 
+        public bool IsCleaned { get; set; } = false;
+
 
     }
 }

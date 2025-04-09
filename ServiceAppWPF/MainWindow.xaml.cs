@@ -51,6 +51,11 @@ namespace ServiceAppWPF
                         Header = "Occupied",
                         DisplayMemberBinding = new Binding("Occupied")
                     });
+                    mylistViewGridView.Columns.Add(new GridViewColumn
+                    {
+                        Header = "Cleaned",
+                        DisplayMemberBinding = new Binding("Cleaned")
+                    });
 
                     break;
                 case "Reservation":
@@ -84,7 +89,8 @@ namespace ServiceAppWPF
                 {
                     Id = room.Id,
                     Name = room.Name,
-                    Occupied = room.IsAvailable ? "No" : "Yes"
+                    Occupied = room.IsAvailable ? "No" : "Yes",
+                    Cleaned = room.IsCleaned ? "Yes" : "No"
                 });
             }
 
