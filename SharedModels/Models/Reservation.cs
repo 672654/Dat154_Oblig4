@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ namespace SharedModels.Models
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
         public string Status { get; set; } // e.g., "Pending", "Confirmed", "Cancelled"
+
+        [AllowNull]
         public string Notes { get; set; } // Optional notes for the reservation
 
         public virtual User User { get; set; }

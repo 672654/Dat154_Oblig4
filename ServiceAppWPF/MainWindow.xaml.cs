@@ -29,12 +29,71 @@ namespace ServiceAppWPF
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void UpdateListViewColumns(string type)
         {
-            var r = context.Reservation.ToList();
+            mylistViewGridView.Columns.Clear(); 
 
-            MessageBox.Show($"Antall reservasjoner: {r.Count}");
+            switch (type)
+            {
+                case "Room":
+                    mylistViewGridView.Columns.Add(new GridViewColumn
+                    {
+                        Header = "Roomnumber",
+                        DisplayMemberBinding = new Binding("Id")
+                    });
+                    mylistViewGridView.Columns.Add(new GridViewColumn
+                    {
+                        Header = "Type",
+                        DisplayMemberBinding = new Binding("Name")
+                    });
+                    mylistViewGridView.Columns.Add(new GridViewColumn
+                    {
+                        Header = "Occupied",
+                        DisplayMemberBinding = new Binding("Occupied")
+                    });
 
+                    break;
+                case "Reservation":
+                    mylistViewGridView.Columns.Add(new GridViewColumn
+                    {
+                        Header = "Booking ID",
+                        DisplayMemberBinding = new Binding("Id")
+                    });
+                    mylistViewGridView.Columns.Add(new GridViewColumn
+                    {
+                        Header = "Customer Name",
+                        DisplayMemberBinding = new Binding("customerName")
+                    });
+                    
+                    break;
+            }
+        }
+
+        private void RoomList_Click(object sender, RoutedEventArgs e)
+        {
+            var r = context.Room
+                .OrderBy(x => x.Id)
+                .ToList();
+
+            UpdateListViewColumns("Room");
+            
+
+            foreach (var room in r)
+            {
+                myListView.Items.Add(new
+                {
+                    Id = room.Id,
+                    Name = room.Name,
+                    Occupied = room.IsAvailable ? "No" : "Yes"
+                });
+            }
+
+
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
 
         }
     }

@@ -71,5 +71,15 @@ namespace DesktopApp
 
             dataGridView1.DataSource = viewRooms;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataGridViewButtonColumn makeReseration = new DataGridViewButtonColumn();
+            makeReseration.HeaderText = "Action";
+            makeReseration.Text = "Make Reservation";
+            makeReseration.UseColumnTextForButtonValue = true;
+
+            dataGridView1.Columns.Add(makeReseration);
+        }
     }
 }

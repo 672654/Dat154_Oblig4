@@ -32,12 +32,14 @@
             AllRooms = new Button();
             button1 = new Button();
             dataGridView1 = new DataGridView();
+            button2 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(AllRooms);
             panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Top;
@@ -62,7 +64,7 @@
             button1.Name = "button1";
             button1.Size = new Size(199, 34);
             button1.TabIndex = 0;
-            button1.Text = "Alle Reservasjoner";
+            button1.Text = "All Reservations";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -76,6 +78,16 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(800, 394);
             dataGridView1.TabIndex = 1;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(638, 12);
+            button2.Name = "button2";
+            button2.Size = new Size(150, 34);
+            button2.TabIndex = 2;
+            button2.Text = "Management";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // Form1
             // 
@@ -97,5 +109,6 @@
         private Button button1;
         private DataGridView dataGridView1;
         private Button AllRooms;
+        private Button button2;
     }
 }
