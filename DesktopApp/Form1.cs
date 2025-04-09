@@ -1,5 +1,6 @@
 using Booking.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SharedModels.Models;
 
 namespace DesktopApp
@@ -16,11 +17,40 @@ namespace DesktopApp
             context = new BookingContext(optionsBuilder.Options);
 
             InitializeComponent();
+
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+
+        }
+
+        private void dataGridView1_CellContentClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == dataGridView1.Columns["Manage"].Index && e.RowIndex >= 0)
+            {
+                //Id for reservasjon eller rom.
+                int Id;
+                if (dataGridView1.Columns["Reservationnumber"] != null)
+                {
+
+                    Id = (int)dataGridView1.Rows[e.RowIndex].Cells["Reservationnumber"].Value;
+                    var reservation = context.Reservation.Find(Id);
+                    MessageBox.Show(reservation.User.Name);
+
+                }
+                else if (dataGridView1.Columns["RoomNumber"] != null)
+                {
+                    Id = (int)dataGridView1.Rows[e.RowIndex].Cells["RoomNumber"].Value;
+                    var room = context.Room.Find(Id);
+                    string innsjekket = room.CheckedIn ? "Checked inn" :  "Not Checked in";
+                    MessageBox.Show($"{room.Name} \n{room.Capacity} \n{innsjekket}.");
+
+
+                }
+            }
         }
 
         private void allReservations_Click(object sender, EventArgs e)
         {
-
+            dataGridView1.Columns.Clear();
             var reservation = context.Reservation
                 .Include(res => res.User) // Sørg for at reservasjonen har riktig navigasjon til User
                 .ToList();
@@ -58,6 +88,7 @@ namespace DesktopApp
 
         private void AllRooms_Click(object sender, EventArgs e)
         {
+            dataGridView1.Columns.Clear();
             var rooms = context.Room.ToList();
 
             var viewRooms = rooms.Select(room => new
@@ -71,20 +102,17 @@ namespace DesktopApp
                 .ToList();
 
             dataGridView1.DataSource = viewRooms;
+            Manage(sender, e);
         }
+
 
         private void Manage(object sender, EventArgs e)
         {
             DataGridViewButtonColumn edit = new DataGridViewButtonColumn();
             edit.HeaderText = "Manage";
             edit.Text = "Edit";
+            edit.Name = "Manage";
             edit.UseColumnTextForButtonValue = true;
-
-            //legg til event til knappen!
-            //bruk num til å sende til korrekt nye view da flere editors skal brukes.
-            // 1 = manage reservations
-            // 2 = manage rooms
-            // 3 = manage service
 
             dataGridView1.Columns.Add(edit);
         }

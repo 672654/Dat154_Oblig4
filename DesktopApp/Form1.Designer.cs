@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button2 = new Button();
             AllRooms = new Button();
             button1 = new Button();
             dataGridView1 = new DataGridView();
@@ -39,7 +38,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(button2);
             panel1.Controls.Add(AllRooms);
             panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Top;
@@ -47,16 +45,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 56);
             panel1.TabIndex = 2;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(638, 12);
-            button2.Name = "button2";
-            button2.Size = new Size(150, 34);
-            button2.TabIndex = 2;
-            button2.Text = "Management";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += Manage;
             // 
             // AllRooms
             // 
@@ -109,6 +97,5 @@
         private Button button1;
         private DataGridView dataGridView1;
         private Button AllRooms;
-        private Button button2;
     }
 }
