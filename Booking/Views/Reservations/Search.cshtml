@@ -3,6 +3,7 @@
 @{
 
     ViewData["Title"] = "Available Rooms";
+	
     DateTime checkInDate = (DateTime)ViewData["CheckInDate"]; // Hente datoer fra ViewData
     DateTime checkOutDate = (DateTime)ViewData["CheckOutDate"];
 }
@@ -38,8 +39,8 @@ else
                     <td>
                         <a asp-action="Reserve"
                            asp-route-roomId="@room.Id"
-                           asp-route-checkInDate="@checkInDate"
-                           asp-route-checkOutDate="@checkOutDate">Reserve</a>
+                           asp-route-checkInDate="@checkInDate.ToString("yyyy-MM-dd")"
+                           asp-route-checkOutDate="@checkOutDate.ToString("yyyy-MM-dd")">Reserve</a>
                     </td>
                 </tr>
             }
