@@ -9,6 +9,7 @@ namespace Booking.Data
 {
     public class BookingContext : DbContext
     {
+
         public BookingContext (DbContextOptions<BookingContext> options)
             : base(options)
         {
