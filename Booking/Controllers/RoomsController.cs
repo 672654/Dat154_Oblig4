@@ -58,6 +58,8 @@ namespace Booking.Controllers
         {
             if (ModelState.IsValid)
             {
+                room.CheckedIn = false;
+                room.CheckedOut = false;
                 _context.Add(room);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
