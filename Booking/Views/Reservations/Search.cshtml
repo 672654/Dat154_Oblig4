@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SharedModels.Models.Room>
+
+@{
+
+    ViewData["Title"] = "Available Rooms";
+    DateTime checkInDate = (DateTime)ViewData["CheckInDate"]; // Hente datoer fra ViewData
+    DateTime checkOutDate = (DateTime)ViewData["CheckOutDate"];
+}
+
+
+<h1>Available Rooms</h1>
+
+<p>Check-in Date: @checkInDate.ToString("yyyy-MM-dd")</p>
+<p>Check-out Date: @checkOutDate.ToString("yyyy-MM-dd")</p>
+
+@if (ViewData["AvailableRooms"] == null || !((IEnumerable<SharedModels.Models.Room>)ViewData["AvailableRooms"]).Any())
+{
+    <p>No rooms available for the selected dates.</p>
+}
+
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Room</th>
+                <th>Capacity</th>
+                <th>Actions</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var room in (IEnumerable<SharedModels.Models.Room>)ViewData["AvailableRooms"])
+            {
+                <tr>
+                    <td>@room.Name</td>
+                    <td>@room.Capacity</td>
+                    <td>
+                        <a asp-action="Reserve"
+                           asp-route-roomId="@room.Id"
+                           asp-route-checkInDate="@checkInDate"
+                           asp-route-checkOutDate="@checkOutDate">Reserve</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

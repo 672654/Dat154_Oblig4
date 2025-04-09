@@ -1,0 +1,16 @@
+﻿
+@{
+	var reservation = ViewData["Reservation"] as SharedModels.Models.Reservation;
+	var room = ViewData["Room"] as SharedModels.Models.Room;
+}
+
+<h1>Reservation Confirmed</h1>
+
+@if(reservation!=null){
+	<p>Cutomer Name: @reservation.User.Name</p>
+	<p>Room: @room.Name</p>
+	<p>Check-in Date: @reservation.StartDate.ToString("yyyy-MM-dd")</p>
+	<p>Check-out Date: @reservation.EndDate.ToString("yyyy-MM-dd")</p>
+	<p>Notes: @reservation.Notes</p>
+	<p>Status: @reservation.Status</p>
+}

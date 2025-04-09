@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	ViewData["Title"] = "Reserve";
+	var room = ViewData["Room"] as SharedModels.Models.Room;
+	var checkInDate = ViewData["CheckInDate"] as DateTime?;
+	var checkOutDate = ViewData["CheckOutDate"] as DateTime?;
+	
+}
+
+<h1>Reserve Room</h1>
+
+<p>Please fill out form to complete reservation</p>
+
+<form asp-action="CreateNewReservation" method="post">
+	<div>
+		<label for="room">Room: </label>
+		<span>@room.Name</span>
+		<input type="hidden" id="roomId" name="roomId" value="@room.Id" />
+	</div>
+
+	<div>
+		<label for="checkInDate">Check-in Date:</label>
+		<span>@checkInDate?.ToString("yyyy-MM-dd")</span>
+		<input type="hidden" id="checkInDate" name="checkInDate" value="@checkInDate?.ToString("yyyy-MM-dd")" />
+	</div>
+
+	<div>
+		<label for="checkOutDate">Check-out Date:</label>
+		<span>@checkOutDate?.ToString("yyyy-MM-dd")</span>
+		<input type="hidden" id="checkOutDate" name="checkOutDate" value="@checkOutDate?.ToString("yyyy-MM-dd")" />
+	</div>
+
+	<div>
+		<label for="customerName">Customer Name:</label>
+		<input type="text" id="customerName" name="customerName" required />
+	</div>
+
+	<div>
+		<label for="notes>">Notes:</label>
+		<input type="text" name="notes" id="notes" />"
+	</div>
+
+	<div>
+		<input type="submit" value=" reserve" />
+	</div>
+</form>
