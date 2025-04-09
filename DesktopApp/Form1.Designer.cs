@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            AllRooms = new Button();
             button1 = new Button();
             dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
@@ -37,12 +38,23 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(AllRooms);
             panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 56);
             panel1.TabIndex = 2;
+            // 
+            // AllRooms
+            // 
+            AllRooms.Location = new Point(217, 12);
+            AllRooms.Name = "AllRooms";
+            AllRooms.Size = new Size(112, 34);
+            AllRooms.TabIndex = 1;
+            AllRooms.Text = "All Rooms";
+            AllRooms.UseVisualStyleBackColor = true;
+            AllRooms.Click += AllRooms_Click;
             // 
             // button1
             // 
@@ -56,6 +68,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = Color.LightBlue;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 56);
@@ -63,7 +76,6 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(800, 394);
             dataGridView1.TabIndex = 1;
-            dataGridView1.BackgroundColor = Color.LightBlue;
             // 
             // Form1
             // 
@@ -84,6 +96,6 @@
         private Panel panel1;
         private Button button1;
         private DataGridView dataGridView1;
-        
+        private Button AllRooms;
     }
 }
