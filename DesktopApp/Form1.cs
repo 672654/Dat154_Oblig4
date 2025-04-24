@@ -24,7 +24,7 @@ namespace DesktopApp
 
         private void dataGridView1_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == dataGridView1.Columns["Manage"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dataGridView1.Columns["Manage"].Index && e.RowIndex >= 0)
             {
                 //Id for reservasjon eller rom.
                 int Id;
@@ -33,16 +33,18 @@ namespace DesktopApp
 
                     Id = (int)dataGridView1.Rows[e.RowIndex].Cells["Reservationnumber"].Value;
                     var reservation = context.Reservation.Find(Id);
-                    MessageBox.Show(reservation.User.Name);
+
+                    ReservationManagement reservationManagement = new ReservationManagement(context, reservation);
+                    reservationManagement.ShowDialog();
 
                 }
                 else if (dataGridView1.Columns["RoomNumber"] != null)
                 {
                     Id = (int)dataGridView1.Rows[e.RowIndex].Cells["RoomNumber"].Value;
                     var room = context.Room.Find(Id);
-                    string innsjekket = room.CheckedIn ? "Checked inn" :  "Not Checked in";
-                    MessageBox.Show($"{room.Name} \n{room.Capacity} \n{innsjekket}.");
 
+                    RoomManagement roomManagement = new RoomManagement(context, room);
+                    roomManagement.ShowDialog();
 
                 }
             }
@@ -55,22 +57,24 @@ namespace DesktopApp
                 .Include(res => res.User) // Sørg for at reservasjonen har riktig navigasjon til User
                 .ToList();
 
-            var viewReservation = reservation.Select(res => new
-            {
-                Reservationnumber = res.Id,
-                UserName = res.User != null ? res.User.Name : "Ingen bruker",
-                RoomNumber = res.RoomId,
-                res.StartDate,
-                res.EndDate,
-                res.Notes,
-                res.Status
-            })
-                .OrderBy(res => res.StartDate)
+            var reservationAndRoom = context.Reservation
+                .Join(context.Room, res => res.RoomId, room => room.Id, (res, room) => new
+                {
+                    Reservationnumber = res.Id,
+                    Customer = res.User != null ? res.User.Name : "Ingen bruker",
+                    RoomNumber = res.RoomId,
+                    RoomName = room.Name,
+                    From = res.StartDate,
+                    To = res.EndDate,
+                    Notes = res.Notes,
+                    Status = res.Status
+                })
+                .OrderBy(r => r.From)
                 .ToList();
 
 
             CustomDataGridView();
-            dataGridView1.DataSource = viewReservation;
+            dataGridView1.DataSource = reservationAndRoom;
             Manage(sender, e);
 
 
@@ -96,7 +100,8 @@ namespace DesktopApp
                 RoomNumber = room.Id,
                 RoomName = room.Name,
                 Capacity = room.Capacity,
-                IsAvailable = room.IsAvailable
+                IsAvailable = room.IsAvailable,
+                Cleaned = room.IsCleaned
             })
                 .OrderBy(room => room.RoomNumber)
                 .ToList();
@@ -117,8 +122,16 @@ namespace DesktopApp
             dataGridView1.Columns.Add(edit);
         }
 
-        
+        private void button2_CreateNewRoom_Click(object sender, EventArgs e)
+        {
+            CreateNewRoom createNewRoom = new CreateNewRoom(context);
+            createNewRoom.ShowDialog();
+        }
 
-
+        private void button2_NewReservation_Click(object sender, EventArgs e)
+        {
+            CreateNewReservation createNewReservation = new CreateNewReservation(context);
+            createNewReservation.ShowDialog();
+        }
     }
 }
