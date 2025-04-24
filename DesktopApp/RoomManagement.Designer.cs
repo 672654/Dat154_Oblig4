@@ -34,8 +34,10 @@
             isCleaned = new CheckBox();
             buttonChangeRoom = new Button();
             groupBox1 = new GroupBox();
+            AddServiceButton = new Button();
             button1DeleteRoom = new Button();
             button1NewRoom = new Button();
+            button1_CreateMaintenance = new Button();
             ((System.ComponentModel.ISupportInitialize)capasity).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -77,7 +79,7 @@
             // 
             // buttonChangeRoom
             // 
-            buttonChangeRoom.Location = new Point(29, 220);
+            buttonChangeRoom.Location = new Point(29, 237);
             buttonChangeRoom.Name = "buttonChangeRoom";
             buttonChangeRoom.Size = new Size(148, 68);
             buttonChangeRoom.TabIndex = 4;
@@ -87,20 +89,32 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(button1_CreateMaintenance);
+            groupBox1.Controls.Add(AddServiceButton);
             groupBox1.Controls.Add(button1DeleteRoom);
             groupBox1.Controls.Add(button1NewRoom);
             groupBox1.Location = new Point(465, 34);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(300, 254);
+            groupBox1.Size = new Size(300, 296);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Management";
             // 
+            // AddServiceButton
+            // 
+            AddServiceButton.Location = new Point(15, 172);
+            AddServiceButton.Name = "AddServiceButton";
+            AddServiceButton.Size = new Size(279, 55);
+            AddServiceButton.TabIndex = 2;
+            AddServiceButton.Text = "Add Service";
+            AddServiceButton.UseVisualStyleBackColor = true;
+            AddServiceButton.Click += AddServiceButton_Click;
+            // 
             // button1DeleteRoom
             // 
-            button1DeleteRoom.Location = new Point(51, 152);
+            button1DeleteRoom.Location = new Point(15, 87);
             button1DeleteRoom.Name = "button1DeleteRoom";
-            button1DeleteRoom.Size = new Size(183, 64);
+            button1DeleteRoom.Size = new Size(279, 51);
             button1DeleteRoom.TabIndex = 1;
             button1DeleteRoom.Text = "Delete Room";
             button1DeleteRoom.UseVisualStyleBackColor = true;
@@ -108,13 +122,23 @@
             // 
             // button1NewRoom
             // 
-            button1NewRoom.Location = new Point(51, 50);
+            button1NewRoom.Location = new Point(15, 32);
             button1NewRoom.Name = "button1NewRoom";
-            button1NewRoom.Size = new Size(183, 64);
+            button1NewRoom.Size = new Size(279, 49);
             button1NewRoom.TabIndex = 0;
             button1NewRoom.Text = "Create New Room";
             button1NewRoom.UseVisualStyleBackColor = true;
             button1NewRoom.Click += button1NewRoom_Click;
+            // 
+            // button1_CreateMaintenance
+            // 
+            button1_CreateMaintenance.Location = new Point(15, 233);
+            button1_CreateMaintenance.Name = "button1_CreateMaintenance";
+            button1_CreateMaintenance.Size = new Size(279, 55);
+            button1_CreateMaintenance.TabIndex = 3;
+            button1_CreateMaintenance.Text = "Add Maintenance";
+            button1_CreateMaintenance.UseVisualStyleBackColor = true;
+            button1_CreateMaintenance.Click += button1_CreateMaintenance_Click;
             // 
             // RoomManagement
             // 
@@ -145,5 +169,7 @@
         private GroupBox groupBox1;
         private Button button1DeleteRoom;
         private Button button1NewRoom;
+        private Button AddServiceButton;
+        private Button button1_CreateMaintenance;
     }
 }

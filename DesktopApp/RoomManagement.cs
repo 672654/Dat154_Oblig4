@@ -68,7 +68,19 @@ namespace DesktopApp
             this.Close();
             CreateNewRoom createNewRoom = new CreateNewRoom(context);
             createNewRoom.ShowDialog();
-            
+
+        }
+
+        private void AddServiceButton_Click(object sender, EventArgs e)
+        {
+            CreateNewService newService = new CreateNewService(context, room);
+            newService.ShowDialog();
+        }
+
+        private void button1_CreateMaintenance_Click(object sender, EventArgs e)
+        {
+            CreateNewMaintenance newMaintenance = new CreateNewMaintenance(context, room);
+            newMaintenance.ShowDialog();
         }
     }
 }

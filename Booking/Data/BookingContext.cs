@@ -18,5 +18,9 @@ namespace Booking.Data
         public DbSet<SharedModels.Models.Reservation> Reservation { get; set; } = default!;
         public DbSet<SharedModels.Models.User> User { get; set; } = default!;
         public DbSet<SharedModels.Models.Room> Room { get; set; } = default!;
+
+        public DbSet<SharedModels.Models.Service> Service { get; set; } = default!;
+
+        public DbSet<SharedModels.Models.Maintenance> Maintenance { get; set; } = default!;
     }
 }
