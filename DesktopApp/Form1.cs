@@ -101,7 +101,8 @@ namespace DesktopApp
                 RoomName = room.Name,
                 Capacity = room.Capacity,
                 IsAvailable = room.IsAvailable,
-                Cleaned = room.IsCleaned
+                Cleaned = room.IsCleaned,
+                Clean_Status = room.CleaningStatus
             })
                 .OrderBy(room => room.RoomNumber)
                 .ToList();

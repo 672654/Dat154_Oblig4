@@ -52,6 +52,7 @@ namespace DesktopApp
                 newRoom.IsCleaned = false;
                 newRoom.CheckedIn = false;
                 newRoom.CheckedOut = false;
+                newRoom.CleaningStatus = "New";
 
                 context.Add(newRoom);
                 context.SaveChanges();

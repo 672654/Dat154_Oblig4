@@ -1,0 +1,31 @@
+﻿<Window x:Class="ServiceAppWPF.CleaningSchedule"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ServiceAppWPF"
+        mc:Ignorable="d"
+        Title="CleaningSchedule" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="CleaningGrid" AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="RoomNumber" Binding="{Binding RoomNumber}" />
+                <DataGridTextColumn Header="Occupied" Binding="{Binding Occupied}" />
+                <DataGridTextColumn Header="Cleaned" Binding="{Binding Cleaned}" />
+                <DataGridTextColumn Header="Cleaning Status" Binding="{Binding Status}" />
+                <DataGridTemplateColumn Header="Manage">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="CleanButton" Content="{Binding TextContent}" Click="MarkAsCleande_Click" CommandParameter="{Binding RoomNumber}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+           
+        </DataGrid>
+
+
+    </Grid>
+</Window>
