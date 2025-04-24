@@ -37,7 +37,8 @@ namespace ServiceAppWPF
 
         private void Service_Click(object sender, RoutedEventArgs e)
         {
-            //Not yet implemented
+            Service service = new Service(context);
+            service.Show();
         }
 
         private void Maintenance_Click(object sender, RoutedEventArgs e)

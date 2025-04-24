@@ -1,0 +1,30 @@
+﻿<Window x:Class="ServiceAppWPF.Service"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ServiceAppWPF"
+        mc:Ignorable="d"
+        Title="Service" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="ServiceGrid" AutoGenerateColumns="False" Background="#FF5D5757">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ServiceId" Binding="{Binding ServiceId}" />
+                <DataGridTextColumn Header="RoomNumber" Binding="{Binding RoomNumber}" />
+                <DataGridTextColumn Header="Customer Checked In" Binding="{Binding Occupied}" />
+                <DataGridTextColumn Header="Service" Binding="{Binding ServiceMessage}" />
+                <DataGridTextColumn Header="Service Status" Binding="{Binding Status}" />
+                <DataGridTemplateColumn Header="Manage">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="ServiceButton" Content="{Binding TextContent}" Background="{Binding ButtonColor}" Click="DoService_Click" CommandParameter="{Binding ServiceId}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+</Window>
