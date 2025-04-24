@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ServiceAppWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="Cleaning" Content="Cleaning" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Cleaning_Click" Width="154" Height="113"/>
-        <Button x:Name="Service" Content="Service" HorizontalAlignment="Left" Margin="222,10,0,0" VerticalAlignment="Top" Width="164" Click="Service_Click" Height="113"/>
-        <Button x:Name="Maintenance" Content="Maintenance" HorizontalAlignment="Left" Margin="444,10,0,0" VerticalAlignment="Top" Width="168" Click="Maintenance_Click" Height="113"/>
+        Title="MainWindow" Height="178" Width="637">
+    <Grid Background="#FF3F3D3D">
+        <Button x:Name="Cleaning" Content="Cleaning" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Cleaning_Click" Width="154" Height="113" Background="#FF64F180" BorderBrush="Black"/>
+        <Button x:Name="Service" Content="Service" HorizontalAlignment="Left" Margin="222,10,0,0" VerticalAlignment="Top" Width="164" Click="Service_Click" Height="113" Background="#FFE5E94D" BorderBrush="Black"/>
+        <Button x:Name="Maintenance" Content="Maintenance" HorizontalAlignment="Left" Margin="444,10,0,0" VerticalAlignment="Top" Width="168" Click="Maintenance_Click" Height="113" Background="#FFF29070" BorderBrush="Black"/>
     </Grid>
 </Window>

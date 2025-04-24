@@ -42,7 +42,11 @@ namespace ServiceAppWPF
                     Cleaned = r.IsCleaned ? "Yes" : "No",
                     Status = r.CleaningStatus,
                     TextContent = r.CleaningStatus.Contains("Progress") ? "Finish cleaning" : "Start cleaning",
-                }).ToList();
+                    ButtonColor = r.CleaningStatus.Contains("Progress") ? "Green" : "Red",
+                    IsRedColor = r.CleaningStatus.Contains("Progress") ? false : true,
+                })
+                .OrderByDescending(r => r.IsRedColor)
+                .ToList();
             
             CleaningGrid.ItemsSource = cleaningData;
 

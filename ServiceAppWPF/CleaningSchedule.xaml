@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ServiceAppWPF"
         mc:Ignorable="d"
-        Title="CleaningSchedule" Height="450" Width="800">
+        Title="CleaningSchedule" Height="450" Width="800" Background="#FF322D2D">
     <Grid>
-        <DataGrid x:Name="CleaningGrid" AutoGenerateColumns="False">
+        <DataGrid x:Name="CleaningGrid" AutoGenerateColumns="False" Background="#FF5D5757">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="RoomNumber" Binding="{Binding RoomNumber}" />
@@ -17,7 +17,7 @@
                 <DataGridTemplateColumn Header="Manage">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="CleanButton" Content="{Binding TextContent}" Click="MarkAsCleande_Click" CommandParameter="{Binding RoomNumber}"/>
+                            <Button x:Name="CleanButton" Content="{Binding TextContent}" Background="{Binding ButtonColor}" Click="MarkAsCleande_Click" CommandParameter="{Binding RoomNumber}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
