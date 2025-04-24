@@ -7,14 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Cleaning schedule" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="RoomList_Click"/>
-
-        <ListView Name="myListView" Margin="0,59,0,0">
-            <ListView.View>
-                <GridView x:Name="mylistViewGridView">
-                    <!---send liste hit-->
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Button x:Name="Cleaning" Content="Cleaning" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Cleaning_Click" Width="154" Height="113"/>
+        <Button x:Name="Service" Content="Service" HorizontalAlignment="Left" Margin="222,10,0,0" VerticalAlignment="Top" Width="164" Click="Service_Click" Height="113"/>
+        <Button x:Name="Maintenance" Content="Maintenance" HorizontalAlignment="Left" Margin="444,10,0,0" VerticalAlignment="Top" Width="168" Click="Maintenance_Click" Height="113"/>
     </Grid>
 </Window>

@@ -20,6 +20,8 @@ namespace SharedModels.Models
 
         public bool IsCleaned { get; set; } = false;
 
+        public string CleaningStatus { get; set; }
+
 
     }
 }

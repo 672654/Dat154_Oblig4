@@ -39,6 +39,14 @@ namespace DesktopApp
             room.Capacity = (int)capasity.Value;
             room.IsAvailable = isAvailable.Checked;
             room.IsCleaned = isCleaned.Checked;
+            if (room.IsCleaned)
+            {
+                room.CleaningStatus = "Finished";
+            }
+            else
+            {
+                room.CleaningStatus = "New";
+            }
 
             context.SaveChanges();
 

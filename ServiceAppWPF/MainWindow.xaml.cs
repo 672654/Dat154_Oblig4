@@ -29,78 +29,22 @@ namespace ServiceAppWPF
             InitializeComponent();
         }
 
-        private void UpdateListViewColumns(string type)
+        private void Cleaning_Click(object sender, RoutedEventArgs e)
         {
-            mylistViewGridView.Columns.Clear(); 
-
-            switch (type)
-            {
-                case "Room":
-                    mylistViewGridView.Columns.Add(new GridViewColumn
-                    {
-                        Header = "Roomnumber",
-                        DisplayMemberBinding = new Binding("Id")
-                    });
-                    mylistViewGridView.Columns.Add(new GridViewColumn
-                    {
-                        Header = "Type",
-                        DisplayMemberBinding = new Binding("Name")
-                    });
-                    mylistViewGridView.Columns.Add(new GridViewColumn
-                    {
-                        Header = "Occupied",
-                        DisplayMemberBinding = new Binding("Occupied")
-                    });
-                    mylistViewGridView.Columns.Add(new GridViewColumn
-                    {
-                        Header = "Cleaned",
-                        DisplayMemberBinding = new Binding("Cleaned")
-                    });
-
-                    break;
-                case "Reservation":
-                    mylistViewGridView.Columns.Add(new GridViewColumn
-                    {
-                        Header = "Booking ID",
-                        DisplayMemberBinding = new Binding("Id")
-                    });
-                    mylistViewGridView.Columns.Add(new GridViewColumn
-                    {
-                        Header = "Customer Name",
-                        DisplayMemberBinding = new Binding("customerName")
-                    });
-                    
-                    break;
-            }
+            CleaningSchedule cleaningSchedule = new CleaningSchedule(context);
+            cleaningSchedule.Show();
         }
 
-        private void RoomList_Click(object sender, RoutedEventArgs e)
+        private void Service_Click(object sender, RoutedEventArgs e)
         {
-            var r = context.Room
-                .OrderBy(x => x.Id)
-                .ToList();
-
-            UpdateListViewColumns("Room");
-            
-
-            foreach (var room in r)
-            {
-                myListView.Items.Add(new
-                {
-                    Id = room.Id,
-                    Name = room.Name,
-                    Occupied = room.IsAvailable ? "No" : "Yes",
-                    Cleaned = room.IsCleaned ? "Yes" : "No"
-                });
-            }
-
-
-
+            //Not yet implemented
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Maintenance_Click(object sender, RoutedEventArgs e)
         {
-
+            //Not yet implemented
         }
+
+       
     }
 }
