@@ -43,7 +43,8 @@ namespace ServiceAppWPF
 
         private void Maintenance_Click(object sender, RoutedEventArgs e)
         {
-            //Not yet implemented
+            Maintenance maintenance = new Maintenance(context);
+            maintenance.Show();
         }
 
        

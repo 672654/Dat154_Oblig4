@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="Maintenance" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="MaintenanceGrid" AutoGenerateColumns="False" Background="#FF5D5757">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="MaintenanceId" Binding="{Binding MaintenanceId}" />
+                <DataGridTextColumn Header="RoomNumber" Binding="{Binding RoomNumber}" />
+                <DataGridTextColumn Header="Customer Checked In" Binding="{Binding Occupied}" />
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Maintenance Status" Binding="{Binding Status}" />
+                <DataGridTemplateColumn Header="Manage">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="MaintenanceButton" Content="{Binding TextContent}" Background="{Binding ButtonColor}" Click="MaintenanceButton_Click" CommandParameter="{Binding MaintenanceId}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
     </Grid>
 </Window>
